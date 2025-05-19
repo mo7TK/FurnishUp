@@ -1,0 +1,220 @@
+.admin-commandes-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+.commandes-content {
+  flex-grow: 1;
+  padding: 2rem;
+  margin-left: 270px; /* Match sidebar width from Sidebar.css */
+  transition: margin-left 0.3s ease;
+}
+
+.commandes-content h1 {
+  margin-bottom: 2rem;
+  color: #3e2723;
+  text-align: center;
+  font-weight: 600;
+}
+
+.loading-container {
+  text-align: center;
+  margin-top: 3rem;
+  color: #777;
+}
+
+.commandes-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.commandes-section h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: brown;
+  font-weight: 600;
+  border-bottom: 2px solid #f6f4f1;
+  padding-bottom: 0.75rem;
+}
+
+.aucune-commande {
+  color: #777;
+  font-style: italic;
+  text-align: center;
+  padding: 1rem;
+}
+
+.commande-card {
+  border: 1px solid #e0e0e0;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.commande-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.commande-card.completee {
+  background-color: #f7fbf7;
+  border-left: 5px solid #4caf50;
+}
+
+.commande-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.commande-id {
+  font-size: 0.9rem;
+  color: #777;
+  background-color: #f6f4f1;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.commande-info {
+  text-align: left;
+}
+
+.commande-info p {
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.produits-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.produit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.produit-info {
+  flex-grow: 1;
+}
+
+.produit-info h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #3e2723;
+  font-size: 1rem;
+}
+
+.produit-details {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.produit-actions {
+  display: flex;
+  align-items: center;
+}
+
+.envoyer-btn {
+  background-color: brown;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+}
+
+.envoyer-btn:hover {
+  background-color: rgb(212, 70, 70);
+}
+
+.envoye-badge {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.produit-total {
+  font-weight: bold;
+  color: #333;
+}
+
+.commande-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  text-align: right;
+}
+
+.total-commande {
+  font-size: 1.1rem;
+  color: brown;
+  font-weight: 600;
+}
+
+.completee-section {
+  opacity: 0.9;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .commandes-content {
+    margin-left: 200px;
+    padding: 1rem;
+  }
+}
+
+.commande-header {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.produit-item {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.produit-details {
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.produit-actions {
+  margin-top: 0.5rem;
+  align-self: flex-start;
+}
+
+@media screen and (max-width: 480px) {
+  .commandes-content {
+    margin-left: 0;
+    padding: 0.5rem;
+  }
+}

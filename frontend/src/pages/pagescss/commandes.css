@@ -1,0 +1,204 @@
+.commandes-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.commandes-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.commandes-section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.commandes-section h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.aucune-commande {
+  color: #777;
+  font-style: italic;
+}
+
+.commande-card {
+  border: 1px solid #e0e0e0;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.commande-card.completee {
+  background-color: #f0f8f0;
+  border-left: 5px solid #4CAF50;
+}
+
+.commande-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.commande-header h3 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.commande-id {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.commande-info {
+  text-align: left;
+}
+
+.commande-info p {
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.produits-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.produit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.produit-item:last-child {
+  border-bottom: none;
+}
+
+.produit-info {
+  flex-grow: 1;
+}
+
+.produit-info h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #666;
+  font-size: 1rem;
+}
+
+.produit-details {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.produit-quantite, .produit-prix {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.produit-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.envoyer-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.envoyer-btn:hover {
+  background-color: #45a049;
+}
+
+.envoye-badge {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.produit-total {
+  font-weight: bold;
+  color: #333;
+  font-size: 0.9em;
+}
+
+.commande-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  text-align: right;
+}
+
+.total-commande {
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+  .commande-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .produit-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .produit-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .envoyer-btn, .envoye-badge {
+    margin-right: 0;
+  }
+
+  .produit-total {
+    align-self: flex-end;
+  }
+}
+
+
+/* Décale le contenu s'il y a une sidebar */
+.with-sidebar {
+  margin-left: 220px; /* La largeur de votre Sidebar */
+}
+
+/* Commandes-container existant, inchangé */
+.commandes-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+}

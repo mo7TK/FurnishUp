@@ -1,0 +1,38 @@
+
+
+
+
+.utilisateurs-container{
+  display: flex;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-left: 250px;
+}
+
+.spinner-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+
+.supp {
+  color: red;
+}
+
+.supp:hover {
+  color: #ff7875;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+

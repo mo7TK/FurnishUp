@@ -1,0 +1,290 @@
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fafafa;
+  margin: 0;
+  color: #333;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.2rem;
+}
+
+.profil-wrapper {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.profil-header {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.avatar {
+  background: #eaeaea;
+  border-radius: 50%;
+  padding: 15px;
+}
+
+.profil-info h2 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.profil-info p {
+  color: #999;
+  font-size: 0.95rem;
+  margin: 5px 0;
+}
+
+.profil-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.profil-actions button {
+  background: #efefef;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.2rem;
+}
+
+.profil-actions button:hover {
+  background: #ddd;
+}
+
+.profil-form {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.profil-form input {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.submit-btnn {
+  background-color: black; /* vert */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px; /* plus petit que 12px 20px */
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: fit-content; /* réduit la largeur au contenu */
+  align-self: start;  /* aligné à gauche dans la grille */
+}
+
+.submit-btnn:hover {
+  background-color: rgb(71, 67, 67); /* vert plus foncé au hover */
+}
+
+
+.error {
+  color: #e74c3c;
+  font-size: 0.9rem;
+}
+
+.message {
+  color: #27ae60;
+  font-size: 0.95rem;
+}
+
+.profil-heading {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  color: #111;
+  letter-spacing: -0.5px;
+  margin-bottom: 25px;
+  position: relative;
+  padding-left: 10px;
+  border-left: 4px solid #0066cc;
+  transition: all 0.3s ease-in-out;
+}
+
+.profil-heading:hover {
+  color: #0066cc;
+  border-left-color: #004a99;
+}
+
+.titre-produits {
+  margin: 40px 0 20px 0;
+  padding-left: 10px;
+  border-left: 4px solid brown;
+}
+
+.titre-produits h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #111;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+.titre-produits h3 svg,
+.titre-produits h3 i {
+  color: brown;
+  font-size: 1.3rem;
+}
+.no-products {
+
+  font-size: 1.2rem;
+  color: #888;
+  text-align: center;
+  margin-top: 100px;
+  font-weight: bold;
+  margin-bottom: 100px;
+}
+
+/* Styles pour la section commentaires */
+.commentaires-section {
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.commentaires-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #333;
+}
+
+.commentaires-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.commentaire-card {
+  position: relative; /* Ajouté pour positionner le bouton en absolute */
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.commentaire-produit {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.commentaire-produit h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.commentaire-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.commentaire-content {
+  flex: 1;
+}
+
+.commentaire-note {
+  display: flex;
+  gap: 0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.star-filled {
+  color: #ffc107;
+}
+
+.star-empty {
+  color: #e0e0e0;
+}
+
+.commentaire-text {
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+.commentaire-date {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: right;
+}
+
+.no-comments {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  padding: 1rem;
+}
+
+
+.commentaire-produit:hover {
+  background-color: #f5f5f5;
+  transition: background-color 0.2s ease;
+}
+
+.commentaire-image {
+  cursor: pointer;
+}
+
+.commentaire-produit h4 {
+  cursor: pointer;
+  color: #1890ff;
+  transition: color 0.2s ease;
+}
+
+.commentaire-produit h4:hover {
+  color: #40a9ff;
+  text-decoration: underline;
+}
+
+
+.delete-comment-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: red;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.delete-comment-btn:hover {
+  background-color: #cc0000;
+    transform: scale(1.1);
+}
+
