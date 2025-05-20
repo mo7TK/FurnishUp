@@ -11,7 +11,7 @@ const Produit = ({ produit }) => {
     <div className="produit-container">
       <div className="produit-image-container">
         <img
-          src={`https://furnishup-backend.onrender.com/ ${produit.images[0].replace(
+          src={`https://furnishup-backend.onrm/ ${produit.images[0].replace(
             /\\/g,
             "/"
           )}`}
