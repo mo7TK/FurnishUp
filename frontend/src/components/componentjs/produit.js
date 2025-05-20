@@ -3,9 +3,6 @@ import { FaShoppingCart, FaSearch } from "react-icons/fa";
 import "../componentcss/produit.css";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "./CartContext.js";
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
-
 
 const Produit = ({ produit }) => {
   const navigate = useNavigate();
@@ -14,7 +11,7 @@ const Produit = ({ produit }) => {
     <div className="produit-container">
       <div className="produit-image-container">
         <img
-          src={`${BASE_URL}/${produit.images[0]}`}
+          src={`https://furnishup-api.onrender.com/${produit.images[0]}`}
           alt={produit.nom}
           className="produit-image"
         />
