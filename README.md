@@ -69,14 +69,14 @@ PORT=5000
 4. **Démarrer le serveur**
 
 ```bash
-cd server
+cd backend
 node server.js
 ```
 
 5. **Démarrer le frontend**
 
 ```bash
-cd Frontend
+cd frontend
 npm start
 ```
 
