@@ -31,7 +31,7 @@ const CarteMesProduits = ({ produit, onDelete, onValidate }) => {
       {/* Côté gauche - Image */}
       <div className="card-image-container">
         <img
-          src={`https://frontend-rkch.vercel.app/${produit.images[0]}`}
+          src={`https://furnishup-backend.onrender.com/${produit.images[0]}`}
           alt={produit.nom}
           className="card-image"
         />
