@@ -11,7 +11,7 @@ const Produit = ({ produit }) => {
     <div className="produit-container">
       <div className="produit-image-container">
         <img
-          src={`https://backend-rkch.onrender.com/${produit.images[0]}`}
+          src={`https://backend-rkch.onrender.com/api/${produit.images[0]}`}
           alt={produit.nom}
           className="produit-image"
         />
