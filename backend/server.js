@@ -4,9 +4,8 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 const produitRoutes = require("./routes/produitRoutes");
 const userRoutes = require("./routes/userRoutes");
-const commandeRoutes=require("./routes/commandeRoutes");
-const chatbotRoute =require("./routes/chatbotRoute");
-
+const commandeRoutes = require("./routes/commandeRoutes");
+const chatbotRoute = require("./routes/chatbotRoute");
 
 connectDB();
 
@@ -20,7 +19,7 @@ app.use("/api/auth", userRoutes);
 app.use("/api/commande", commandeRoutes);
 app.use("/api/chatbot", chatbotRoute);
 
-
-
-const PORT =  5005;
-app.listen(PORT, () => console.log(`Serveur lancé sur http://localhost:${PORT}`));
+const PORT = process.env.PORT || 5005;
+app.listen(PORT, () => {
+  console.log(`Serveur lancé sur http://localhost:${PORT}`);
+});
