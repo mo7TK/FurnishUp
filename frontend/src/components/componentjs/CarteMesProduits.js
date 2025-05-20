@@ -31,7 +31,7 @@ const CarteMesProduits = ({ produit, onDelete, onValidate }) => {
       {/* Côté gauche - Image */}
       <div className="card-image-container">
         <img
-          src={`http://localhost:5005/${produit.images[0]}`}
+          src={`https://frontend-rkch.vercel.app/${produit.images[0]}`}
           alt={produit.nom}
           className="card-image"
         />

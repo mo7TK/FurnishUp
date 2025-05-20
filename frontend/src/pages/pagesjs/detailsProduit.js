@@ -170,13 +170,13 @@ const DetailsProduit = () => {
         <div className="top-section">
           <div className="image-section">
             <div className="main-image-container">
-              <img src={`http://localhost:5005/${mainImage}`} alt={produit.nom} className="main-image" />
+              <img src={`https://frontend-rkch.vercel.app/${mainImage}`} alt={produit.nom} className="main-image" />
             </div>
             <div className="thumbnails">
               {produit.images.filter(img => img !== mainImage).map((img, i) => (
                 <img
                   key={i}
-                  src={`http://localhost:5005/${img}`}
+                  src={`https://frontend-rkch.vercel.app/${img}`}
                   alt={`${produit.nom} ${i}`}
                   className={`thumbnail ${mainImage === img ? 'active-thumbnail' : ''}`}
                   onClick={() => setMainImage(img)}
