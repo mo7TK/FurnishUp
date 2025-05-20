@@ -37,7 +37,7 @@ PW : 123123
 ### Prérequis
 
 - Node.js installé
-- MongoDB (local)
+- MongoDB Atlas
 
 ### Étapes
 
