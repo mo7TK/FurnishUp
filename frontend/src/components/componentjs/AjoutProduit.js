@@ -32,7 +32,7 @@ export default function AjoutProduit() {
     "Exterieur",
     "Chambre",
     "Bureau",
-    "Decoration"
+    "Decoration",
   ];
 
   const etats = ["Neuf", "Occasion"];
@@ -152,11 +152,37 @@ export default function AjoutProduit() {
       if (!donneesFormulaire.etat) {
         newErrors.etat = "Veuillez sélectionner un état.";
       }
-      if (!donneesFormulaire.prix || isNaN(donneesFormulaire.prix) || donneesFormulaire.prix <= 0) {
+      if (
+        !donneesFormulaire.prix ||
+        isNaN(donneesFormulaire.prix) ||
+        donneesFormulaire.prix <= 0
+      ) {
         newErrors.prix = "Le prix doit être un nombre positif.";
       }
-      if (!donneesFormulaire.stock || isNaN(donneesFormulaire.stock) || donneesFormulaire.stock < 0) {
-        newErrors.stock = "La quantité en stock doit être un nombre valide (positif ou zéro).";
+      if (
+        donneesFormulaire.prixReduction &&
+        (isNaN(donneesFormulaire.prixReduction) ||
+          donneesFormulaire.prixReduction < 0)
+      ) {
+        newErrors.prixReduction =
+          "Le prix avant la remise doit être un nombre valide (positif ou zéro).";
+      }
+          if (
+      donneesFormulaire.prixReduction &&
+      parseFloat(donneesFormulaire.prixReduction) <=
+        parseFloat(donneesFormulaire.prix)
+    ) {
+      newErrors.prixReduction =
+        "Le prix avant la remise doit être supérieur au prix actuel.";
+    }
+
+      if (
+        !donneesFormulaire.stock ||
+        isNaN(donneesFormulaire.stock) ||
+        donneesFormulaire.stock < 0
+      ) {
+        newErrors.stock =
+          "La quantité en stock doit être un nombre valide (positif ou zéro).";
       }
       if (!donneesFormulaire.description) {
         newErrors.description = "Veuillez entrer une description.";
@@ -166,7 +192,6 @@ export default function AjoutProduit() {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0; // Retourne true si aucune erreur
   };
-
 
   const nextStep = () => {
     if (validateStep()) {
@@ -181,270 +206,255 @@ export default function AjoutProduit() {
   return (
     <>
       <Navbar />
-        <div className="produits-form-background">
-          <form onSubmit={gererSoumissionFormulaire} className="form-containerr">
-            <h2 className="form-titlee">Ajouter un nouveau produit</h2>
+      <div className="produits-form-background">
+        <form onSubmit={gererSoumissionFormulaire} className="form-containerr">
+          <h2 className="form-titlee">Ajouter un nouveau produit</h2>
 
-            {step === 1 && (
-              <>
-                <label className="form-label">Ajouter des images</label>
-                <div className="image-preview-container">
-                  {images.map((src, index) => (
-                    <div key={index} className="image-wrapper">
-                      <img src={src} alt="Aperçu" className="image-preview" />
-                    </div>
-                  ))}
-                  {images.length < 4 && (
-                    <label className="add-image-button">
-                      <input
-                        type="file"
-                        multiple
-                        onChange={gererTelechargementImages}
-                        className="hidden-file-input"
-                      />
-                      <span>+</span>
-                    </label>
-                  )}
-                </div>
-                {errors.images && (
-                  <p className="error-message">{errors.images}</p>
+          {step === 1 && (
+            <>
+              <label className="form-label">Ajouter des images</label>
+              <div className="image-preview-container">
+                {images.map((src, index) => (
+                  <div key={index} className="image-wrapper">
+                    <img src={src} alt="Aperçu" className="image-preview" />
+                  </div>
+                ))}
+                {images.length < 4 && (
+                  <label className="add-image-button">
+                    <input
+                      type="file"
+                      multiple
+                      onChange={gererTelechargementImages}
+                      className="hidden-file-input"
+                    />
+                    <span>+</span>
+                  </label>
                 )}
-                <div className="step-navigation">
-                  <button
-                    type="button"
-                    onClick={nextStep}
-                    className="next-button"
-                  >
-                    Suivant
-                  </button>
-                </div>
-              </>
-            )}
-
-            {step === 2 && (
-              <>
-                <select
-                  name="categorie"
-                  value={donneesFormulaire.categorie}
-                  onChange={gererChangement}
-                  className="input-field"
+              </div>
+              {errors.images && (
+                <p className="error-message">{errors.images}</p>
+              )}
+              <div className="step-navigation">
+                <button
+                  type="button"
+                  onClick={nextStep}
+                  className="next-button"
                 >
-                  <option value="" disabled>
-                    Choisissez une catégorie
+                  Suivant
+                </button>
+              </div>
+            </>
+          )}
+
+          {step === 2 && (
+            <>
+              <select
+                name="categorie"
+                value={donneesFormulaire.categorie}
+                onChange={gererChangement}
+                className="input-field"
+              >
+                <option value="" disabled>
+                  Choisissez une catégorie
+                </option>
+                {categories.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
                   </option>
-                  {categories.map((cat) => (
-                    <option key={cat} value={cat}>
-                      {cat}
-                    </option>
-                  ))}
-                </select>
-                {errors.categorie && (
-                  <p className="error-message">{errors.categorie}</p>
-                )}
+                ))}
+              </select>
+              {errors.categorie && (
+                <p className="error-message">{errors.categorie}</p>
+              )}
 
+              <input
+                type="text"
+                name="nom"
+                placeholder="Nom du produit"
+                value={donneesFormulaire.nom}
+                onChange={gererChangement}
+                className="input-field"
+              />
+              {errors.nom && <p className="error-message">{errors.nom}</p>}
+
+              <input
+                type="text"
+                name="materiau"
+                placeholder="matériau"
+                value={donneesFormulaire.materiau}
+                onChange={gererChangement}
+                className="input-field"
+              />
+              {errors.materiau && (
+                <p className="error-message">{errors.materiau}</p>
+              )}
+
+              <input
+                type="text"
+                name="couleur"
+                placeholder="Couleur du produit"
+                value={donneesFormulaire.couleur}
+                onChange={gererChangement}
+                className="input-field"
+              />
+              {errors.couleur && (
+                <p className="error-message">{errors.couleur}</p>
+              )}
+
+              <fieldset className="dimensions-fieldset">
+                <legend className="form-label">Dimensions (cm)</legend>
                 <input
-                  type="text"
-                  name="nom"
-                  placeholder="Nom du produit"
-                  value={donneesFormulaire.nom}
-                  onChange={gererChangement}
-                  className="input-field"
+                  type="number"
+                  name="largeur"
+                  placeholder="Largeur"
+                  value={donneesFormulaire.dimensions.largeur}
+                  onChange={(e) =>
+                    setDonneesFormulaire((prev) => ({
+                      ...prev,
+                      dimensions: {
+                        ...prev.dimensions,
+                        largeur: e.target.value,
+                      },
+                    }))
+                  }
+                  className="input-field small-input"
                 />
-                {errors.nom && <p className="error-message">{errors.nom}</p>}
-
                 <input
-                  type="text"
-                  name="materiau"
-                  placeholder="matériau"
-                  value={donneesFormulaire.materiau}
-                  onChange={gererChangement}
-                  className="input-field"
+                  type="number"
+                  name="hauteur"
+                  placeholder="Hauteur"
+                  value={donneesFormulaire.dimensions.hauteur}
+                  onChange={(e) =>
+                    setDonneesFormulaire((prev) => ({
+                      ...prev,
+                      dimensions: {
+                        ...prev.dimensions,
+                        hauteur: e.target.value,
+                      },
+                    }))
+                  }
+                  className="input-field small-input"
                 />
-                {errors.materiau && (
-                  <p className="error-message">{errors.materiau}</p>
-                )}
-
                 <input
-                  type="text"
-                  name="couleur"
-                  placeholder="Couleur du produit"
-                  value={donneesFormulaire.couleur}
-                  onChange={gererChangement}
-                  className="input-field"
+                  type="number"
+                  name="profondeur"
+                  placeholder="Profondeur"
+                  value={donneesFormulaire.dimensions.profondeur}
+                  onChange={(e) =>
+                    setDonneesFormulaire((prev) => ({
+                      ...prev,
+                      dimensions: {
+                        ...prev.dimensions,
+                        profondeur: e.target.value,
+                      },
+                    }))
+                  }
+                  className="input-field small-input"
                 />
-                {errors.couleur && (
-                  <p className="error-message">{errors.couleur}</p>
-                )}
+              </fieldset>
+              {errors.dimensions && (
+                <p className="error-message">{errors.dimensions}</p>
+              )}
 
-                <fieldset className="dimensions-fieldset">
-                  <legend className="form-label">Dimensions (cm)</legend>
-                  <input
-                    type="number"
-                    name="largeur"
-                    placeholder="Largeur"
-                    value={donneesFormulaire.dimensions.largeur}
-                    onChange={(e) =>
-                      setDonneesFormulaire((prev) => ({
-                        ...prev,
-                        dimensions: {
-                          ...prev.dimensions,
-                          largeur: e.target.value,
-                        },
-                      }))
-                    }
-                    className="input-field small-input"
-                  />
-                  <input
-                    type="number"
-                    name="hauteur"
-                    placeholder="Hauteur"
-                    value={donneesFormulaire.dimensions.hauteur}
-                    onChange={(e) =>
-                      setDonneesFormulaire((prev) => ({
-                        ...prev,
-                        dimensions: {
-                          ...prev.dimensions,
-                          hauteur: e.target.value,
-                        },
-                      }))
-                    }
-                    className="input-field small-input"
-                  />
-                  <input
-                    type="number"
-                    name="profondeur"
-                    placeholder="Profondeur"
-                    value={donneesFormulaire.dimensions.profondeur}
-                    onChange={(e) =>
-                      setDonneesFormulaire((prev) => ({
-                        ...prev,
-                        dimensions: {
-                          ...prev.dimensions,
-                          profondeur: e.target.value,
-                        },
-                      }))
-                    }
-                    className="input-field small-input"
-                  />
-                </fieldset>
-                {errors.dimensions && (
-                  <p className="error-message">{errors.dimensions}</p>
-                )}
-
-                <div className="step-navigation">
-                  <button
-                    type="button"
-                    onClick={prevStep}
-                    className="prev-button"
-                  >
-                    Précédent
-                  </button>
-                  <button
-                    type="button"
-                    onClick={nextStep}
-                    className="next-button"
-                  >
-                    Suivant
-                  </button>
-                </div>
-              </>
-            )}
-
-            {step === 3 && (
-              <>
-                <select
-                  name="etat"
-                  value={donneesFormulaire.etat}
-                  onChange={gererChangement}
-                  className="input-field"
+              <div className="step-navigation">
+                <button
+                  type="button"
+                  onClick={prevStep}
+                  className="prev-button"
                 >
-                  <option value="" disabled selected>
-                    Choisissez un état
-                  </option>
-                  {etats.map((etat) => (
-                    <option key={etat} value={etat}>
-                      {etat}
-                    </option>
-                  ))}
-                </select>
-                {errors.etat && <p className="error-message">{errors.etat}</p>}
+                  Précédent
+                </button>
+                <button
+                  type="button"
+                  onClick={nextStep}
+                  className="next-button"
+                >
+                  Suivant
+                </button>
+              </div>
+            </>
+          )}
 
-                <div className="inline-fields">
-                  <input
-                    type="number"
-                    name="prixReduction"
-                    placeholder="Prix avant la Remise en dinar algérien (optionnel) "
-                    value={donneesFormulaire.prixReduction}
-                    onChange={gererChangement}
-                    className="input-field"
-                  />
-                  {errors.prix && (
-                    <p className="error-message">{errors.prix}</p>
-                  )}
-                  <input
-                    type="number"
-                    name="prix"
-                    placeholder="Prix en dinar algérien"
-                    value={donneesFormulaire.prix}
-                    onChange={gererChangement}
-                    className="input-field"
-                  />
-                </div>
+          {step === 3 && (
+            <>
+              <select
+                name="etat"
+                value={donneesFormulaire.etat}
+                onChange={gererChangement}
+                className="input-field"
+              >
+                <option value="" disabled selected>
+                  Choisissez un état
+                </option>
+                {etats.map((etat) => (
+                  <option key={etat} value={etat}>
+                    {etat}
+                  </option>
+                ))}
+              </select>
+              {errors.etat && <p className="error-message">{errors.etat}</p>}
+
+              <div className="inline-fields">
+                <input
+                  type="number"
+                  name="prixReduction"
+                  placeholder="Prix avant la Remise en dinar algérien (optionnel) "
+                  value={donneesFormulaire.prixReduction}
+                  onChange={gererChangement}
+                  className="input-field"
+                />
 
                 <input
                   type="number"
-                  name="stock"
-                  placeholder="Quantité en stock"
-                  value={donneesFormulaire.stock}
+                  name="prix"
+                  placeholder="Prix en dinar algérien"
+                  value={donneesFormulaire.prix}
                   onChange={gererChangement}
                   className="input-field"
                 />
-                {errors.stock && (
-                  <p className="error-message">{errors.stock}</p>
-                )}
+              </div>
+              {errors.prixReduction && (
+                <p className="error-message">{errors.prixReduction}</p>
+              )}
+              {errors.prix && <p className="error-message">{errors.prix}</p>}
 
-                <textarea
-                  name="description"
-                  placeholder="Description du produit"
-                  value={donneesFormulaire.description}
-                  onChange={gererChangement}
-                  className="input-field"
-                />
-                {errors.description && (
-                  <p className="error-message">{errors.description}</p>
-                )}
+              <input
+                type="number"
+                name="stock"
+                placeholder="Quantité en stock"
+                value={donneesFormulaire.stock}
+                onChange={gererChangement}
+                className="input-field"
+              />
+              {errors.stock && <p className="error-message">{errors.stock}</p>}
 
-                <div className="step-navigation">
-                  <button
-                    type="button"
-                    onClick={prevStep}
-                    className="prev-button"
-                  >
-                    Précédent
-                  </button>
-                  <button type="submit" className="submit-buttonn">
-                    Publier
-                  </button>
-                </div>
-              </>
-            )}
-          </form>
-        </div>
+              <textarea
+                name="description"
+                placeholder="Description du produit"
+                value={donneesFormulaire.description}
+                onChange={gererChangement}
+                className="input-field"
+              />
+              {errors.description && (
+                <p className="error-message">{errors.description}</p>
+              )}
+
+              <div className="step-navigation">
+                <button
+                  type="button"
+                  onClick={prevStep}
+                  className="prev-button"
+                >
+                  Précédent
+                </button>
+                <button type="submit" className="submit-buttonn">
+                  Publier
+                </button>
+              </div>
+            </>
+          )}
+        </form>
+      </div>
     </>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
