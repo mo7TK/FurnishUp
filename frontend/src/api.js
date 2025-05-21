@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const API_URL = "http://localhost:5005/api";
+const API_URL = "https://furnishup-kqh8.onrender.com/api";
 
 //  Création de l'instance Axios avec la configuration
 const api = axios.create({
@@ -34,7 +34,7 @@ api.interceptors.request.use(
 export const searchProducts = async (query) => {
   try {
     const response = await api.get("/produits/recherche", {
-      params: { q: query }, // GET http://localhost:5005/api/produits/recherche?q=canapé
+      params: { q: query }, // GET https://backend-gfo6.onrender.com/produits/recherche?q=canapé
     });
     return response.data;
   } catch (error) {
@@ -629,22 +629,24 @@ export const getCommentairesByUser = async (userId) => {
 
 ////////////:chatbot
 /*
-export const envoyerQuestionChatbot  = async (question) => {
+export const envoyerQuestionChatbot = async (question) => {
   try {
-    const response = await api.post('produits/chatbot', { question });
-    
-    console.log('Réponse du chatbot:', response.data);
+    const response = await api.post("/api/chatbot", {
+      message: question, 
+    });
+    console.log("Réponse chatbot :", response.data);
+    return response.data;
   } catch (error) {
-    console.error('Erreur lors de l\'envoi de la question:', error);
-    alert('Erreur : impossible de contacter le chatbot.');
+    console.error("Erreur chatbot :", error);
+    alert("Erreur : impossible de contacter le chatbot.");
   }
 };
-*/
 
+*/
 
  export const envoyerQuestionChatbot = async (question) => {
   try {
-    const response = await api.post('produits/chatbot', { question });
+    const response = await api.post('produits/chatbot', {question });
     console.log(response.data);
   } catch (error) {
     if (error.response && error.response.status === 429) {

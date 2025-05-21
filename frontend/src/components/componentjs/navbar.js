@@ -89,7 +89,7 @@ const Navbar = () => {
                   <div key={product._id} className="search-item" onClick={() => { navigate("/details", { state: product }); setQuery(""); setResults([]) }}>
                     <Link to={`/produit/${product._id}`} className="search-link">
                       <img
-                        src={`https://furnishup-backend.onrender.com/${product.images[0]}`}
+                        src={`http://furnishup-kqh8.onrender.com/${product.images[0]}`}
                         alt={product.nom}
                         className="cart-item-image"
                       />

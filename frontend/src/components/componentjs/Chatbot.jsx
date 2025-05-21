@@ -24,7 +24,7 @@ const Chatbot = () => {
     setQuestion("");
 
     try {
-      const res = await axios.post("http://localhost:5005/api/chatbot", { message: question });
+      const res = await axios.post("https://furnishup-kqh8.onrender.com/api/chatbot", { message: question });
       const data = res.data;
       console.log(data.products);
 
@@ -93,7 +93,7 @@ const Chatbot = () => {
                         padding: "10px",
                         marginTop: "5px"
                       }}>
-                        <img src={`http://localhost:5005/${product.images[0]}`} alt={product.nom} style={{ width: "100%", borderRadius: "5px" }} />
+                        <img src={`https://furnishup-kqh8.onrender.com/${product.images[0]}`} alt={product.nom} style={{ width: "100%", borderRadius: "5px" }} />
                         <h4>{product.nom}</h4>
                         <p><strong>Prix:</strong> {product.prix} DA</p>
                         <p>{product.description}</p>

@@ -8,7 +8,7 @@ const CartPanier = ({ produit, quantite }) => {
 
   return (
     <div className="cart-item">
-      <img src={`https://furnishup-backend.onrender.com/${produit.images[0]}`} alt={produit.nom} className="cart-item-image" />
+      <img src={`http://furnishup-kqh8.onrender.com/${produit.images[0]}`} alt={produit.nom} className="cart-item-image" />
       <div className="cart-item-info">
         <h3>{produit.nom}</h3>
         <p>{produit.description}</p>

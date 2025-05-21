@@ -239,7 +239,7 @@ export default function Profil() {
                       style={{ cursor: 'pointer' }}
                     >
                       <img
-                        src={`https://furnishup-backend.onrender.com/${produit.images[0]}`}
+                        src={`http://furnishup-kqh8.onrender.com/${produit.images[0]}`}
                         alt={produit.nom}
                         className="commentaire-image"
                       />

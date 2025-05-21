@@ -2,11 +2,13 @@ import { useState } from "react";
 import { addProduit } from "../../api"; // Importation de la fonction d'ajout de produit
 import "../componentcss/AjoutProduit.css";
 import Navbar from "./navbar";
-import Loader from "./Loader";
+
 
 export default function AjoutProduit() {
   const [step, setStep] = useState(1);
   const [images, setImages] = useState([]);
+   const userId = localStorage.getItem("userid");
+ const isAdmin = userId === "67d58664c14a211ded9e25ed";
   const [fichiersImages, setFichiersImages] = useState([]);
   const [donneesFormulaire, setDonneesFormulaire] = useState({
     nom: "",
@@ -32,7 +34,7 @@ export default function AjoutProduit() {
     "Exterieur",
     "Chambre",
     "Bureau",
-    "Decoration",
+    "Decoration"
   ];
 
   const etats = ["Neuf", "Occasion"];
