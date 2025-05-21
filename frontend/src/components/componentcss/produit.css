@@ -75,3 +75,34 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .produit-container {
+    width: 150px;
+    margin: 5px;
+  }
+
+  .produit-image {
+    height: 120px;
+  }
+
+  .produit-nomcc {
+    font-size: 12px;
+  }
+
+  .price-containera {
+    gap: 5px;
+  }
+
+  .prix-originale {
+    font-size: 10px;
+  }
+
+  .produit-prixcc {
+    font-size: 14px;
+  }
+
+  .icon {
+    font-size: 16px;
+  }
+}

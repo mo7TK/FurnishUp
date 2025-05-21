@@ -99,4 +99,42 @@
     color: white;
   }
   
-  
+  @media screen and (max-width: 768px) {
+  .categories-conteneur {
+    gap: 5px;
+    padding: 10px;
+  }
+
+  .ligne, .ligne1 {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+.categorie,
+  .categorie {
+    width: 95%;
+    height: 200px;
+  }
+
+    .ligne1  .categorie {
+          width: 91%;
+    height: 200px;
+    }
+
+  .ligne:nth-child(2) .categorie {
+    height: 180px;
+  }
+
+  .overlay {
+    padding: 10px;
+  }
+
+  .overlay h2 {
+    font-size: 16px;
+  }
+
+  .overlay button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

@@ -269,3 +269,73 @@ h1 {
   color: #00aa00;
   font-weight: bold;
 }
+
+@media screen and (max-width: 768px) {
+  .details-container {
+    margin: 20px 10px;
+    padding-left: 0;
+  }
+
+  .top-section {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .image-section {
+    flex-direction: column-reverse;
+  }
+
+  .main-image-container {
+    width: 100%;
+    height: 300px;
+  }
+
+  .thumbnails {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .thumbnail {
+    width: 80px;
+    height: 70px;
+  }
+
+  .info-section {
+    margin-left: 0;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .prix {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ajouter-panier,
+  .acheter-direct {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .commentaires-section {
+    padding: 15px;
+  }
+
+  .envoyer-commentaire {
+    width: 100%;
+  }
+  .comment-input {
+    width: 95%;
+  }
+}

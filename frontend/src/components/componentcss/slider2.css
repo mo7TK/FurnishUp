@@ -55,3 +55,31 @@
   font-size: 1rem;
   margin-top: 8px;
 }
+
+@media screen and (max-width: 768px) {
+  .slider-modern-container {
+    padding: 10px 0;
+  }
+
+  .slider-modern {
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .slider-modern-card {
+    min-width: 250px;
+    height: 300px;
+  }
+
+  .slider-modern-overlay {
+    padding: 15px;
+  }
+
+  .slider-modern-overlay h3 {
+    font-size: 1.3rem;
+  }
+
+  .slider-modern-overlay p {
+    font-size: 0.9rem;
+  }
+}

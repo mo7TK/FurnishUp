@@ -20,3 +20,19 @@
     color: brown;
     font-size: 1.3rem;
   }
+
+  @media screen and (max-width: 768px) {
+  .titre-produits {
+    margin: 20px 0 15px 0;
+    padding-left: 8px;
+  }
+
+  .titre-produits h3 {
+    font-size: 1.8rem;
+  }
+
+  .titre-produits h3 svg,
+  .titre-produits h3 i {
+    font-size: 1.1rem;
+  }
+}
