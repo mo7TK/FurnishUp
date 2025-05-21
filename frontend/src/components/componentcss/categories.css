@@ -101,7 +101,7 @@
   
   @media screen and (max-width: 768px) {
   .categories-conteneur {
-    gap: 10px;
+    gap: 1px;
     padding: 10px;
   }
 
@@ -143,4 +143,8 @@
     padding: 6px 12px;
     font-size: 12px;
   }
+    .ligne:first-child, .ligne:last-child {
+      padding-top: 1px;
+      padding-bottom: 1px;
+    }
 }
