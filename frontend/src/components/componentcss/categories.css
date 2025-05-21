@@ -101,11 +101,17 @@
   
   @media screen and (max-width: 768px) {
   .categories-conteneur {
-    gap: 5px;
+    gap: 10px;
     padding: 10px;
   }
 
-  .ligne, .ligne1 {
+  .ligne1 {
+        flex-direction: column;
+    gap: 10px;
+    padding: 13px;
+  }
+
+  .ligne {
     flex-direction: column;
     gap: 10px;
   }
@@ -117,7 +123,7 @@
   }
 
     .ligne1  .categorie {
-          width: 91%;
+          width: 88%;
     height: 200px;
     }
 
