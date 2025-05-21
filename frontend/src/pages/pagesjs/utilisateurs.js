@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { getAllUtilisateurs, deleteUtilisateur } from "../../api";
 import { Table, Space, Spin, message, Modal } from 'antd';
 import Sidebar from '../../components/componentjs/Sidebar';
-import  "../pagescss/utilisateurs.css";
-import { useNavigate , useNavigation } from 'react-router-dom';
+import "../pagescss/utilisateurs.css";
+import { useNavigate } from 'react-router-dom';
 const { confirm } = Modal;
 
 const Utilisateurs = () => {
@@ -11,9 +11,18 @@ const Utilisateurs = () => {
   const [loading, setLoading] = useState(true);
   const ADMIN_ID = "67d58664c14a211ded9e25ed"; // À remplacer par votre variable d'environnement
   const navigate = useNavigate();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     fetchUtilisateurs();
+
+    // Add window resize listener
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const fetchUtilisateurs = async () => {
@@ -28,7 +37,6 @@ const Utilisateurs = () => {
       setLoading(false);
     }
   };
-
 
   const handleDelete = (userId) => {
     if (userId === ADMIN_ID) {
@@ -58,45 +66,58 @@ const Utilisateurs = () => {
     }
   };
 
-  const columns = [
-    {
-      title: 'Nom',
-      dataIndex: 'nom',
-      key: 'nom',
-    },
-    {
-      title: 'Prénom',
-      dataIndex: 'lastname',
-      key: 'lastname',
-    },
-    {
-      title: 'Email',
-      dataIndex: 'email',
-      key: 'email',
-    },
-    {
-      title: 'Nombre de produits',
-      dataIndex: 'nombre_produits',
-      key: 'nombre_produits',
-      sorter: (a, b) => a.nombre_produits - b.nombre_produits,
-    },
-    // Dans la colonne "Action" du tableau
-    {
-      title: 'Action',
-      key: 'action',
-      render: (_, record) => (
-        <Space size="middle">
-          <a onClick={() => navigate(`/profil/${record._id}`)}>Voir</a>
-          <a
-            className='supp'
-            onClick={() => handleDelete(record._id)}
-          >
-            Supprimer
-          </a>
-        </Space>
-      ),
+  // Responsive columns configuration
+  const getColumns = () => {
+    const baseColumns = [
+      {
+        title: 'Nom',
+        dataIndex: 'nom',
+        key: 'nom',
+      },
+      {
+        title: 'Prénom',
+        dataIndex: 'lastname',
+        key: 'lastname',
+      },
+      {
+        title: 'Email',
+        dataIndex: 'email',
+        key: 'email',
+      },
+      {
+        title: 'Nombre de produits',
+        dataIndex: 'nombre_produits',
+        key: 'nombre_produits',
+        sorter: (a, b) => a.nombre_produits - b.nombre_produits,
+      },
+      {
+        title: 'Action',
+        key: 'action',
+        render: (_, record) => (
+          <Space size="middle">
+            <a onClick={() => navigate(`/profil/${record._id}`)}>Voir</a>
+            <a
+              className='supp'
+              onClick={() => handleDelete(record._id)}
+            >
+              Supprimer
+            </a>
+          </Space>
+        ),
+      }
+    ];
+
+    // For mobile screens, reduce columns
+    if (windowWidth <= 768) {
+      return baseColumns.filter(col => 
+        col.dataIndex === 'nom' || 
+        col.dataIndex === 'lastname' || 
+        col.key === 'action'
+      );
     }
-  ];
+
+    return baseColumns;
+  };
 
   return (
     <div className="utilisateurs-container">
@@ -109,10 +130,11 @@ const Utilisateurs = () => {
           </div>
         ) : (
           <Table
-            columns={columns}
+            columns={getColumns()}
             dataSource={utilisateurs}
             rowKey="_id"
-            pagination={{ pageSize: 10 }}
+            pagination={{ pageSize: windowWidth <= 768 ? 5 : 10 }}
+            scroll={{ x: windowWidth <= 768 ? 'max-content' : false }}
           />
         )}
       </div>
@@ -121,6 +143,3 @@ const Utilisateurs = () => {
 };
 
 export default Utilisateurs;
-
-
-

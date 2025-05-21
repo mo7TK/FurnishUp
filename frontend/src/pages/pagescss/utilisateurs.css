@@ -1,29 +1,24 @@
-
-
-
-
-.utilisateurs-container{
+.utilisateurs-container {
   display: flex;
   min-height: 100vh;
   background-color: #f4f4f4;
-  padding: 50px;
   box-sizing: border-box;
 }
 
 .content {
   flex-grow: 1;
-  padding: 20px;
+  padding: 2rem;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-left: 250px;
+  margin-left: 260px; /* Match the sidebar width */
+  transition: margin-left 0.3s ease;
 }
 
 .spinner-container {
   text-align: center;
   margin-top: 50px;
 }
-
 
 .supp {
   color: red;
@@ -35,4 +30,34 @@
   cursor: pointer;
 }
 
+.content h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #5e3d2c;
+}
 
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .content {
+    margin-left: 0;
+    padding: 70px 15px 15px 15px; /* Add top padding for the hamburger menu */
+    border-radius: 0;
+  }
+
+  .content h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Adjust the ant table for small screens */
+  .ant-table {
+    overflow-x: auto;
+    font-size: 12px;
+  }
+
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    padding: 8px 4px;
+    white-space: nowrap;
+  }
+}
