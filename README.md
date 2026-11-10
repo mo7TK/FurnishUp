@@ -6,7 +6,7 @@ web-site link : https://frontend-rkch.vercel.app/
 # compte Admin
 
 Email:admin@example.com
-PW : 123123
+PW : 123123123
 
 ## 🔧 Technologies utilisées
 
